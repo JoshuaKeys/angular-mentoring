@@ -7,6 +7,9 @@ import { FoodItemComponent } from './components/food-item/food-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FoodItemExampleComponent } from './components/food-item-example/food-item-example.component';
 import { FoodItemDescriptionComponent } from './components/food-item-description/food-item-description.component';
+import { FoodItemsService } from './services/food-items.service';
+import { JournalingService } from './services/journaling.service';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -18,9 +21,10 @@ import { FoodItemDescriptionComponent } from './components/food-item-description
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [FoodItemsService, JournalingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,41 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FoodModel } from './model/food.interface';
-
+import { FoodItemsService } from './services/food-items.service';
+import { JournalingService } from './services/journaling.service';
+import { map, pluck, tap } from 'rxjs/operators'
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  // providers: [FoodItemsService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'mentoring';
+  foodItems: FoodModel[];
 
-  foodItems: FoodModel[] = [
-    {
-      imageUrl: 'https://a7m3f5i5.rocketcdn.me/wp-content/uploads/2015/09/moms-spaghetti-sauce-recipe-a-healthy-slice-of-life-6-of-6-800x600.jpg',
-      name: 'Home made Spaghetti',
-      description: 'Very Delicious Spaghetti'
-    },
-    {
-      imageUrl: 'https://a7m3f5i5.rocketcdn.me/wp-content/uploads/2015/09/moms-spaghetti-sauce-recipe-a-healthy-slice-of-life-6-of-6-800x600.jpg',
-      name: 'Home made Spaghetti',
-      description: 'Very Delicious Spaghetti'
-    },
-    {
-      imageUrl: 'https://a7m3f5i5.rocketcdn.me/wp-content/uploads/2015/09/moms-spaghetti-sauce-recipe-a-healthy-slice-of-life-6-of-6-800x600.jpg',
-      name: 'Home made Spaghetti',
-      description: 'Very Delicious Spaghetti'
-    },
-    {
-      imageUrl: 'https://a7m3f5i5.rocketcdn.me/wp-content/uploads/2015/09/moms-spaghetti-sauce-recipe-a-healthy-slice-of-life-6-of-6-800x600.jpg',
-      name: 'Home made Spaghetti',
-      description: 'Very Delicious Spaghetti'
-    },
-  ]
+  constructor(public foodItemSerivce: FoodItemsService, public journalService: JournalingService) { }
+
+  ngOnInit() {
+    this.foodItemSerivce.getFoodItems().pipe(
+      pluck('foodItems'),
+      tap(response => {
+        console.log(response);
+      })
+    ).subscribe(
+      foodItems => this.foodItems = foodItems
+    )
+  }
 
   onAddFood(food: FoodModel) {
-    this.foodItems.push(food);
+    this.foodItemSerivce.addFood(food).pipe(
+      pluck('foodItems'),
+      map(foodItems => foodItems[foodItems.length - 1])
+    ).subscribe(
+      foodItem => this.foodItems.push(foodItem)
+    )
   }
 }
 

@@ -1,15 +1,23 @@
 <div class="container-fluid">
-<h1>Food App</h1>
-<div class="row">
-  <div class="col-3">
-    <app-add-food (foodAdded)="onAddFood($event)"></app-add-food>
-  </div>
-  <div class="col-9">
-    <ul class="row">
-      <li class="col my-3" *ngFor="let food of foodItems">
-        <app-food-item [food]="food"></app-food-item>
-      </li>
-    </ul>
+  <h1>Food App</h1>
+  <div class="row">
+    <div class="col-3">
+      <app-add-food (foodAdded)="onAddFood($event)"></app-add-food>
+    </div>
+    <div class="col-9">
+      <ul class="row">
+        <li class="col my-3" *ngFor="let food of foodItems">
+          <app-food-item [food]="food"></app-food-item>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
+<div class="container-fluid">
+  <h1>Journaling</h1>
+  <ul>
+    <li *ngFor="let journalData of journalService.journals">
+      {{journalData}}
+    </li>
+  </ul>
 </div>
