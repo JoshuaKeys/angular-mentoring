@@ -2,13 +2,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { AddFoodComponent } from './components/add-food/add-food.component';
+import { FoodItemComponent } from './components/food-item/food-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FoodItemExampleComponent } from './components/food-item-example/food-item-example.component';
+import { FoodItemDescriptionComponent } from './components/food-item-description/food-item-description.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddFoodComponent,
+    FoodItemComponent,
+    FoodItemExampleComponent,
+    FoodItemDescriptionComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

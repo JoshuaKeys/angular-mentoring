@@ -1,0 +1,8 @@
+<div class="card" style="width: 18rem;">
+  <img [src]="food.imageUrl" class="card-img-top" [alt]="food.name">
+  <div class="card-body">
+    <h5 class="card-title">{{food.name}}</h5>
+    <app-food-item-description [food]="food"></app-food-item-description>
+    <a href="#" class="btn btn-primary">Delete Food</a>
+  </div>
+</div>

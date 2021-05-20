@@ -1,0 +1,11 @@
+<div class="card" style="width: 18rem;">
+  <ng-content select="img"></ng-content>
+  <div class="card-body">
+    <!-- <h5 class="card-title">{{_food.name}}</h5> -->
+    <ng-content select=".heading"></ng-content>
+    <p class="card-text">{{_food.description}}</p>
+    <ng-content select="a.btn-primary"></ng-content>
+  </div>
+</div>
+
+
