@@ -9,7 +9,11 @@ import { FoodItemExampleComponent } from './components/food-item-example/food-it
 import { FoodItemDescriptionComponent } from './components/food-item-description/food-item-description.component';
 import { FoodItemsService } from './services/food-items.service';
 import { JournalingService } from './services/journaling.service';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { ZippyBasicComponent } from './components/zippy-basic/zippy-basic.component';
+import { ZippyMultislotComponent } from './components/zippy-multislot/zippy-multislot.component'
+import { ExampleZippyTemplateComponent } from './components/example-zippy-template/example-zippy-template.component';
+import { ExampleZipplyContentDirective } from './directives/example-zipply-content.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { HttpClientModule } from '@angular/common/http'
     AddFoodComponent,
     FoodItemComponent,
     FoodItemExampleComponent,
-    FoodItemDescriptionComponent
+    FoodItemDescriptionComponent,
+    ZippyBasicComponent,
+    ZippyMultislotComponent,
+    ExampleZippyTemplateComponent,
+    ExampleZipplyContentDirective
   ],
   imports: [
     BrowserModule,
